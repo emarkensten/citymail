@@ -26,7 +26,7 @@ const PackageJourney = memo(function PackageJourney() {
           </div>
         </div>
 
-        <div className="absolute left-[18px] top-[36px] bottom-[36px] w-[2px] border-l-2 border-dashed border-[#008731] z-0"></div>
+        <div className="absolute left-[18px] top-[16px] bottom-[56px] w-[2px] border-l-2 border-dashed border-[#008731] z-0"></div>
 
         <div className="flex gap-4">
           <div className="bg-[#E8F5EA] p-2 rounded-full w-9 h-9 flex items-center justify-center z-10">
@@ -215,7 +215,7 @@ export default function DeliveryPage() {
                       <Package className="h-6 w-6 text-[#008731]" />
                       <div>
                         <div className="font-medium">Paketskåp</div>
-                        <div className="text-sm">19 kr</div>
+                        <div className="text-sm">29 kr</div>
                         <div className="text-sm text-gray-600">Levereras om 1-2 arbetsdagar</div>
                       </div>
                     </div>
@@ -226,7 +226,7 @@ export default function DeliveryPage() {
                       <Building2 className="h-6 w-6 text-[#008731]" />
                       <div>
                         <div className="font-medium">Ombud</div>
-                        <div className="text-sm">19 kr</div>
+                        <div className="text-sm">39 kr</div>
                         <div className="text-sm text-gray-600">Levereras om 1-2 arbetsdagar</div>
                       </div>
                     </div>
