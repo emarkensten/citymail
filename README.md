@@ -31,7 +31,7 @@ npm install
 2. Set up environment variables:
 ```bash
 # Create a .env.local file and add:
-NEXT_PUBLIC_LOGO_URL=your_citymail_logo_url
+NEXT_PUBLIC_LOGO_URL=/assets/images/citymail-logo.svg
 ```
 
 3. Start the development server:
@@ -67,7 +67,9 @@ npm run lint
 │   └── loading.tsx        # Loading state
 ├── components/
 │   └── ui/               # UI components
-├── public/               # Static assets
+├── public/
+│   └── assets/           # Static assets
+│       └── images/       # Image assets
 └── styles/              # Global styles
 ```
 

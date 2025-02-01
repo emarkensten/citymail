@@ -96,7 +96,7 @@ export default function DeliveryPage() {
         </Link>
         <div className="w-[42px]">
           <Image
-            src={process.env.NEXT_PUBLIC_LOGO_URL || ''}
+            src="/assets/images/citymail-logo.svg"
             alt="Citymail"
             width={42}
             height={40}
