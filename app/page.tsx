@@ -1,101 +1,268 @@
-import Image from "next/image";
+"use client"
 
-export default function Home() {
+import Image from "next/image"
+import Link from "next/link"
+import { Globe, Info, Zap, Package, Share2, CheckSquare, Building2 } from "lucide-react"
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
+import { Checkbox } from "@/components/ui/checkbox"
+import { Input } from "@/components/ui/input"
+import { Button } from "@/components/ui/button"
+import { useState, memo, useEffect } from "react"
+
+const PackageJourney = memo(function PackageJourney() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <div className="bg-white rounded-xl p-4 mb-4 shadow-sm">
+      <h2 className="text-xl font-semibold mb-4">Paketets resa</h2>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+      <div className="space-y-6 relative">
+        <div className="flex gap-4">
+          <div className="bg-[#E8F5EA] p-2 rounded-full w-9 h-9 flex items-center justify-center z-10">
+            <CheckSquare className="h-5 w-5 text-[#008731]" />
+          </div>
+          <div>
+            <div className="font-medium">Årsta</div>
+            <div className="text-sm text-gray-600">Igår 16:48</div>
+            <div className="text-sm">Paketet har ankommit till terminal</div>
+          </div>
+        </div>
+
+        <div className="absolute left-[18px] top-[36px] bottom-[36px] w-[2px] border-l-2 border-dashed border-[#008731] z-0"></div>
+
+        <div className="flex gap-4">
+          <div className="bg-[#E8F5EA] p-2 rounded-full w-9 h-9 flex items-center justify-center z-10">
+            <Building2 className="h-5 w-5 text-[#008731]" />
+          </div>
+          <div>
+            <div className="font-medium">Citymail</div>
+            <div className="text-sm text-gray-600">26 jan 18:40</div>
+            <div className="text-sm">Paketet har aviserats, men ännu inte lämnats in till Citymail</div>
+          </div>
+        </div>
+      </div>
+
+      <button className="text-[#008731] font-medium mt-4">Visa mer</button>
+    </div>
+  )
+})
+
+const Footer = memo(function Footer() {
+  return (
+    <footer className="bg-[#004D1A] text-white p-4 text-center">
+      <p className="mb-2">
+        Undrar du över något?{" "}
+        <Link href="#" className="underline">
+          Kontakta oss
+        </Link>
+      </p>
+      <p className="mb-2">
+        Information om Citymail hittar du på{" "}
+        <Link href="https://citymail.se" className="underline">
+          citymail.se
+        </Link>
+      </p>
+      <div className="flex justify-center gap-4">
+        <Link href="#" className="underline">
+          Integritetspolicy
+        </Link>
+        <Link href="#" className="underline">
+          Cookies
+        </Link>
+      </div>
+    </footer>
+  )
+})
+
+export default function DeliveryPage() {
+  const [email, setEmail] = useState("")
+  const [termsAccepted, setTermsAccepted] = useState(false)
+
+  useEffect(() => {
+    // Basic page view tracking
+    try {
+      if (typeof window !== 'undefined') {
+        // Add your analytics code here
+      }
+    } catch (error) {
+      console.error('Analytics error:', error)
+    }
+  }, [])
+
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-[#00873130] to-transparent">
+      {/* Header */}
+      <header className="flex justify-between items-center p-4">
+        <Link href="#" className="text-[#008731]">
+          <Globe className="h-6 w-6" />
+        </Link>
+        <div className="w-[42px]">
+          <Image
+            src={process.env.NEXT_PUBLIC_LOGO_URL || ''}
+            alt="Citymail"
+            width={42}
+            height={40}
+            className="w-full"
+            priority
+          />
+        </div>
+        <Link href="#" className="text-[#008731]">
+          <Info className="h-6 w-6" />
+        </Link>
+      </header>
+
+      {/* Main Content */}
+      <main className="px-4 pb-20">
+        <div className="mb-6">
+          <h1 className="text-2xl font-bold mb-1">Ditt paket från Meds apotek levereras snart!</h1>
+          <p className="text-lg">
+            <span className="text-[#D85E16] font-medium">På väg</span> levereras tor 6 feb
+          </p>
+        </div>
+
+        {/* Delivery Information */}
+        <div className="bg-white rounded-xl p-4 mb-4 shadow-sm">
+          <h2 className="text-xl font-semibold mb-4">Leveransinformation</h2>
+          <div className="mb-2 font-medium">Hemleverans</div>
+          <p>Ditt paket levereras till Rosenlundsgatan 29A</p>
+          <p>Levereras torsdag 6 februari runt 13:00</p>
+        </div>
+
+        {/* Delivery Alternatives */}
+        <div className="bg-white rounded-xl p-4 mb-4 shadow-sm">
+          <h2 className="text-xl font-semibold mb-4">Leveransalternativ</h2>
+
+          <div className="space-y-0 divide-y divide-gray-200">
+            <Sheet>
+              <SheetTrigger asChild>
+                <button className="w-full flex items-center justify-between p-4 text-left hover:bg-gray-50 transition-colors">
+                  <div className="flex items-center gap-3">
+                    <Zap className="h-6 w-6 text-[#008731]" />
+                    <div>
+                      <div className="font-medium">Tidigarelägg din leverans</div>
+                      <div className="text-sm">19 kr</div>
+                      <div className="text-sm text-gray-600">Tidigast imorgon</div>
+                    </div>
+                  </div>
+                  <div className="text-[#008731]">›</div>
+                </button>
+              </SheetTrigger>
+              <SheetContent side="bottom" className="rounded-t-3xl pt-6">
+                <SheetHeader>
+                  <SheetTitle className="text-xl font-bold flex items-center gap-2">
+                    <Zap className="h-6 w-6 text-[#008731]" />
+                    Tidigarelägg din leverans
+                  </SheetTitle>
+                </SheetHeader>
+                <div className="mt-6 space-y-6">
+                  <div className="flex justify-between items-center">
+                    <span className="text-xl font-semibold">19 kr</span>
+                  </div>
+                  <p>Paketet kan levereras den 31 jan istället.</p>
+                  <div className="space-y-2">
+                    <label htmlFor="email" className="text-base font-medium">
+                      Ange e-postadress
+                    </label>
+                    <Input
+                      type="email"
+                      id="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      placeholder="test@mail.se"
+                      className="w-full"
+                    />
+                    <p className="text-sm text-gray-600">Vi behöver din email för att kunna maila ett kvitto</p>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <Checkbox
+                      id="terms"
+                      checked={termsAccepted}
+                      onCheckedChange={(checked) => setTermsAccepted(checked as boolean)}
+                    />
+                    <label htmlFor="terms" className="text-sm">
+                      Jag godkänner{" "}
+                      <Link href="#" className="text-[#008731] underline">
+                        köp och leveransvillkoren
+                      </Link>
+                    </label>
+                  </div>
+                  <Button className="w-full bg-[#008731] hover:bg-[#007029]" disabled={!email || !termsAccepted}>
+                    Betala 19 kr med swish
+                  </Button>
+                </div>
+              </SheetContent>
+            </Sheet>
+
+            <Sheet>
+              <SheetTrigger asChild>
+                <button className="w-full flex items-center justify-between p-4 text-left hover:bg-gray-50 transition-colors">
+                  <div className="flex items-center gap-3">
+                    <Package className="h-6 w-6 text-[#008731]" />
+                    <div>
+                      <div className="font-medium">Byt leveranssätt</div>
+                      <div className="text-sm">29-39 kr</div>
+                      <div className="text-sm text-gray-600">Byt till ombud eller paketbox</div>
+                    </div>
+                  </div>
+                  <div className="text-[#008731]">›</div>
+                </button>
+              </SheetTrigger>
+              <SheetContent side="bottom" className="rounded-t-3xl pt-6">
+                <SheetHeader>
+                  <SheetTitle className="text-xl font-bold">Välj leveransalternativ</SheetTitle>
+                </SheetHeader>
+                <div className="mt-6 space-y-0 divide-y divide-gray-200">
+                  <button className="w-full flex items-center justify-between p-4 text-left hover:bg-gray-50 transition-colors">
+                    <div className="flex items-center gap-3">
+                      <Package className="h-6 w-6 text-[#008731]" />
+                      <div>
+                        <div className="font-medium">Paketskåp</div>
+                        <div className="text-sm">19 kr</div>
+                        <div className="text-sm text-gray-600">Levereras om 1-2 arbetsdagar</div>
+                      </div>
+                    </div>
+                    <div className="text-[#008731]">›</div>
+                  </button>
+                  <button className="w-full flex items-center justify-between p-4 text-left hover:bg-gray-50 transition-colors">
+                    <div className="flex items-center gap-3">
+                      <Building2 className="h-6 w-6 text-[#008731]" />
+                      <div>
+                        <div className="font-medium">Ombud</div>
+                        <div className="text-sm">19 kr</div>
+                        <div className="text-sm text-gray-600">Levereras om 1-2 arbetsdagar</div>
+                      </div>
+                    </div>
+                    <div className="text-[#008731]">›</div>
+                  </button>
+                </div>
+              </SheetContent>
+            </Sheet>
+
+            <button className="w-full flex items-center justify-between p-4 text-left hover:bg-gray-50 transition-colors">
+              <div className="flex items-center gap-3">
+                <Share2 className="h-6 w-6 text-[#008731]" />
+                <div>
+                  <div className="font-medium">Dela din leverans</div>
+                  <div className="text-sm text-gray-600">Låt någon annan följa ditt paket</div>
+                </div>
+              </div>
+              <div className="text-[#008731]">›</div>
+            </button>
+          </div>
+        </div>
+
+        {/* Package Journey */}
+        <PackageJourney />
+
+        {/* Package Information */}
+        <div className="bg-white rounded-xl p-4 mb-4 shadow-sm">
+          <h2 className="text-xl font-semibold mb-4">Paketinformation</h2>
+          <div className="font-medium">Paket</div>
+          <div>Spårningsnummer</div>
         </div>
       </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+
+      {/* Footer */}
+      <Footer />
     </div>
-  );
+  )
 }
+

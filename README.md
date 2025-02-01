@@ -1,36 +1,101 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Citymail Delivery Tracking
 
-## Getting Started
+A modern delivery tracking interface for Citymail packages, built with Next.js 14 and Tailwind CSS.
 
-First, run the development server:
+![Citymail Logo](public/icon-192x192.png)
 
+## Features
+
+- 📦 Track package status and location
+- 🚚 Change delivery options
+- ⚡ Early delivery booking
+- 🔄 Switch delivery method
+- 📱 Mobile-first responsive design
+- 🌙 Light/dark mode support
+
+## Tech Stack
+
+- **Framework:** Next.js 14
+- **Styling:** Tailwind CSS
+- **Components:** shadcn/ui
+- **Icons:** Lucide Icons
+- **Language:** TypeScript
+
+## Quick Start
+
+1. Install dependencies:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Set up environment variables:
+```bash
+# Create a .env.local file and add:
+NEXT_PUBLIC_LOGO_URL=your_citymail_logo_url
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Start the development server:
+```bash
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Visit [http://localhost:3000](http://localhost:3000) to view the app.
 
-## Learn More
+## Development
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+# Start development server
+npm run dev
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# Build for production
+npm run build
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+# Start production server
+npm start
 
-## Deploy on Vercel
+# Run linting
+npm run lint
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Project Structure
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```
+├── app/                    # Next.js app directory
+│   ├── page.tsx           # Main tracking page
+│   ├── layout.tsx         # Root layout
+│   ├── error.tsx          # Error boundary
+│   └── loading.tsx        # Loading state
+├── components/
+│   └── ui/               # UI components
+├── public/               # Static assets
+└── styles/              # Global styles
+```
+
+## UI Components
+
+The project uses shadcn/ui components, including:
+- Sheet for bottom drawer modals
+- Button for actions
+- Checkbox for terms acceptance
+- Input for email collection
+
+## Environment Variables
+
+Required environment variables:
+- `NEXT_PUBLIC_LOGO_URL`: URL for the Citymail logo
+
+## Browser Support
+
+The app supports all modern browsers:
+- Chrome (latest)
+- Firefox (latest)
+- Safari (latest)
+- Edge (latest)
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## License
+
+This project is licensed under the MIT License.

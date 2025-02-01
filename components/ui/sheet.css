@@ -1,0 +1,6 @@
+// This file can be deleted as its styles aren't being used
+
+.sheet-content [data-radix-collection-item] {
+  display: none;
+}
+
