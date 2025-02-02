@@ -2,8 +2,6 @@
 
 A modern delivery tracking interface for Citymail packages, built with Next.js 14 and Tailwind CSS.
 
-![Citymail Logo](public/icon-192x192.png)
-
 ## Features
 
 - 📦 Track package status and location
@@ -28,13 +26,7 @@ A modern delivery tracking interface for Citymail packages, built with Next.js 1
 npm install
 ```
 
-2. Set up environment variables:
-```bash
-# Create a .env.local file and add:
-NEXT_PUBLIC_LOGO_URL=/assets/images/citymail-logo.svg
-```
-
-3. Start the development server:
+2. Start the development server:
 ```bash
 npm run dev
 ```
@@ -80,11 +72,6 @@ The project uses shadcn/ui components, including:
 - Button for actions
 - Checkbox for terms acceptance
 - Input for email collection
-
-## Environment Variables
-
-Required environment variables:
-- `NEXT_PUBLIC_LOGO_URL`: URL for the Citymail logo
 
 ## Browser Support
 

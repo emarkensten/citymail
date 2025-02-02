@@ -7,7 +7,7 @@ import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/co
 import { Checkbox } from "@/components/ui/checkbox"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
-import { useState, memo, useEffect } from "react"
+import { useState, memo } from "react"
 
 const PackageJourney = memo(function PackageJourney() {
   return (
@@ -75,17 +75,6 @@ const Footer = memo(function Footer() {
 export default function DeliveryPage() {
   const [email, setEmail] = useState("")
   const [termsAccepted, setTermsAccepted] = useState(false)
-
-  useEffect(() => {
-    // Basic page view tracking
-    try {
-      if (typeof window !== 'undefined') {
-        // Add your analytics code here
-      }
-    } catch (error) {
-      console.error('Analytics error:', error)
-    }
-  }, [])
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#00873130] to-transparent">
